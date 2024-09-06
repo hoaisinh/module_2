@@ -27,7 +27,7 @@ public class AppManagement {
                 case 2:
                     showVehicleManagement();break;
                 case 3:
-                    System.out.println("Xóa");break;
+                    deleteVehicle();break;
                 case 4:
                     System.out.println("Thoát");break;
             }
@@ -43,7 +43,7 @@ public class AppManagement {
         int choose =Integer.parseInt(scanner.nextLine());
         switch (choose){
             case 1:
-                System.out.println("Thêm mới xe tải");break;
+              controller.addXeTai();break;
             case 2:
                 System.out.println("Thêm mới ô tô");break;
             case 3:
@@ -62,6 +62,24 @@ public class AppManagement {
         switch (choose){
             case 1:
                 controller.getAll(1);break;
+            case 2:
+                System.out.println("oto");;break;
+            case 3:
+                System.out.println("Hiển thị danh sách xe máy");break;
+
+        }
+    }
+    public static void deleteVehicle(){
+        System.out.println(
+                "-------------Xóa phương tiện ------------- \n" +
+                        "1. Xóa xe tải \n" +
+                        "2. Xóa xe ô tô \n" +
+                        "3. Xóa xe máy"
+        );
+        int choose =Integer.parseInt(scanner.nextLine());
+        switch (choose){
+            case 1:
+                controller.deleteXeTai();break;
             case 2:
                 System.out.println("oto");;break;
             case 3:
