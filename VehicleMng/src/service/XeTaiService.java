@@ -19,8 +19,8 @@ public class XeTaiService implements IXeTaiService{
     }
 
     @Override
-    public void deleteXeTai(String bienKiemSoat) {
-        xeTaiRepo.deleteXeTai(bienKiemSoat);
+    public void deleteVehicle(String bienKiemSoat) {
+        xeTaiRepo.deleteVehicle(bienKiemSoat);
     }
 
     @Override

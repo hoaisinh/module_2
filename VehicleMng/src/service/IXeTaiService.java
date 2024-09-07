@@ -4,9 +4,8 @@ import model.XeTai;
 
 import java.util.List;
 
-public interface IXeTaiService {
+public interface IXeTaiService extends IVehicleService{
     List<XeTai> getAll();
     boolean addXeTai(XeTai xeTai);
-    void deleteXeTai(String bienKiemSoat);
     XeTai findByBKS(String bienKiemSoat);
 }

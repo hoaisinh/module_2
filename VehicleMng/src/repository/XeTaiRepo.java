@@ -20,7 +20,7 @@ public class XeTaiRepo implements IXeTaiRepo{
     }
 
     @Override
-    public void deleteXeTai(String bienKiemSoat) {
+    public void deleteVehicle(String bienKiemSoat) {
             List<XeTai> lists = File.getAllXeTai();
         for (int i = 0; i < lists.size(); i++) {
             if(Objects.equals(lists.get(i).getBienKiemSoat(), bienKiemSoat)){

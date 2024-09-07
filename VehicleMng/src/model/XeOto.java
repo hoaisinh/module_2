@@ -21,6 +21,6 @@ public class XeOto extends Vehicle{
 
     @Override
     public String dataToString() {
-        return super.dataToString()+","+kieuXe+","+soChoNgoi;
+        return super.dataToString()+","+soChoNgoi+","+kieuXe;
     }
 }

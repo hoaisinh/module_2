@@ -45,9 +45,9 @@ public class AppManagement {
             case 1:
               controller.addXeTai();break;
             case 2:
-                System.out.println("Thêm mới ô tô");break;
+                controller.addXeOto();break;
             case 3:
-                System.out.println("Thêm mới xe máy");break;
+               controller.addXeMay();break;
 
         }
     }
@@ -63,9 +63,9 @@ public class AppManagement {
             case 1:
                 controller.getAll(1);break;
             case 2:
-                System.out.println("oto");;break;
+                controller.getAll(2);;break;
             case 3:
-                System.out.println("Hiển thị danh sách xe máy");break;
+                controller.getAll(3);break;
 
         }
     }
@@ -81,9 +81,9 @@ public class AppManagement {
             case 1:
                 controller.deleteXeTai();break;
             case 2:
-                System.out.println("oto");;break;
+                controller.deleteXeOto();;break;
             case 3:
-                System.out.println("Hiển thị danh sách xe máy");break;
+                controller.deleteXeMay();break;
 
         }
     }
