@@ -1,6 +1,7 @@
 package controller;
 
 import common.File;
+import common.Validation;
 import model.XeMay;
 import model.XeOto;
 import model.XeTai;
@@ -22,6 +23,7 @@ public class Controller {
     private final XeMayService xeMayService = new XeMayService();
     public String chonHangSanXuat(){
         List<String> listHangXe = File.getHangSanXuat();
+
         int tempIndex;
         do{
             for (int i = 0; i < listHangXe.size() ; i++) {
@@ -29,9 +31,17 @@ public class Controller {
                         i + " - "+ listHangXe.get(i)
                 );
             }
-             tempIndex = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập lựa chọn của bạn");
+            String tempChoose;
+            do{
+                tempChoose = scanner.nextLine();
+                if(!Validation.isNumber(tempChoose)){
+                    System.out.println("Dữ liệu phải có định dạng số");
+                }
+            }while (!Validation.isNumber(tempChoose));
+             tempIndex = Integer.parseInt(tempChoose);
             if(tempIndex > listHangXe.size()-1){
-                System.out.println("Vui lòng chọn các sô có sẵn");
+                System.out.println("Vui lòng chọn các số có sẵn");
             }
         }while (tempIndex > listHangXe.size()-1);
         return listHangXe.get(tempIndex);
@@ -47,9 +57,16 @@ public class Controller {
                         i + " - "+ listKieuXe.get(i)
                 );
             }
-            tempIndex = Integer.parseInt(scanner.nextLine());
+            String tempChoose;
+            do{
+                tempChoose = scanner.nextLine();
+                if(!Validation.isNumber(tempChoose)){
+                    System.out.println("Dữ liệu phải có định dạng số");
+                }
+            }while (!Validation.isNumber(tempChoose));
+            tempIndex = Integer.parseInt(tempChoose);
             if(tempIndex > listKieuXe.size()-1){
-                System.out.println("Vui lòng chọn các sô có sẵn");
+                System.out.println("Vui lòng chọn các số có sẵn");
             }
         }while (tempIndex > listKieuXe.size()-1);
         return listKieuXe.get(tempIndex);
@@ -61,10 +78,16 @@ public class Controller {
         System.out.println("Chọn hãng sản xuất");
         hangSanXuat = chonHangSanXuat();
         System.out.println("Nhập năm sản xuất");
-        namSanXuat = Integer.parseInt(scanner.nextLine());
+        String temp;
+        do{
+             temp = scanner.nextLine();
+             if(!Validation.isYear(temp)){
+                 System.out.println("Năm sản xuất phải từ 1000 đến 2999");
+             }
+        }while (!Validation.isYear(temp));
+        namSanXuat = Integer.parseInt(temp);
         System.out.println("Nhập chủ sở hữu");
         chuSoHuu =scanner.nextLine();
-
     }
 
     public void getAll(int type){
@@ -92,14 +115,28 @@ public class Controller {
     public void addXeTai(){
         inputData();
         System.out.println("Nhập trọng tải");
-        int trongTai = Integer.parseInt(scanner.nextLine());
+        String temp;
+        do{
+            temp = scanner.nextLine();
+            if(!Validation.isNumber(temp)){
+                System.out.println("Nhập dữ liệu định dạng số");
+            }
+        }while (!Validation.isNumber(temp));
+        int trongTai = Integer.parseInt(temp);
         XeTai xeTai = new XeTai(bienKiemSoat,hangSanXuat,namSanXuat,chuSoHuu,trongTai);
         xeTaiService.addXeTai(xeTai);
     }
     public void addXeOto(){
         inputData();
         System.out.println("Nhập số chỗ ngồi");
-        int soChoNgoi = Integer.parseInt(scanner.nextLine());
+        String temp;
+        do{
+            temp = scanner.nextLine();
+            if(!Validation.isNumber(temp)){
+                System.out.println("Nhập dữ liệu định dạng số");
+            }
+        }while (!Validation.isNumber(temp));
+        int soChoNgoi = Integer.parseInt(temp);
         System.out.println("Chọn kiểu xe");
         String kieuXe = chonkieuXe();
         XeOto xeOto = new XeOto(bienKiemSoat,hangSanXuat,namSanXuat,chuSoHuu,soChoNgoi,kieuXe);
@@ -108,7 +145,14 @@ public class Controller {
     public void addXeMay(){
         inputData();
         System.out.println("Nhập công suất");
-        int congSuat = Integer.parseInt(scanner.nextLine());
+        String temp;
+        do{
+            temp = scanner.nextLine();
+            if(!Validation.isNumber(temp)){
+                System.out.println("Nhập dữ liệu định dạng số");
+            }
+        }while (!Validation.isNumber(temp));
+        int congSuat = Integer.parseInt(temp);
         XeMay xeMay = new XeMay(bienKiemSoat,hangSanXuat,namSanXuat,chuSoHuu,congSuat);
         xeMayService.addXeMay(xeMay);
     }

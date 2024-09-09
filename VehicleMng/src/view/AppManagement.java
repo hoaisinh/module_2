@@ -29,7 +29,7 @@ public class AppManagement {
                 case 3:
                     deleteVehicle();break;
                 case 4:
-                    System.out.println("Thoát");break;
+                    System.exit(1);break;
             }
         }while (true);
     }
