@@ -21,14 +21,20 @@ public class Controller {
     private final XeTaiService xeTaiService = new XeTaiService();
     private final XeOtoService xeOtoService = new XeOtoService();
     private final XeMayService xeMayService = new XeMayService();
+    private final static String PATH_HANG = "src/data/hangSanXuat.csv";
     public String chonHangSanXuat(){
-        List<String> listHangXe = File.getHangSanXuat();
-
+        List<String> listInformationHSX = File.readFile(PATH_HANG);
+        String[] arrData;
+        List<String> listTenHangXe = new ArrayList<>();
+        for (String informationHSX:listInformationHSX){
+            arrData = informationHSX.split(",");
+            listTenHangXe.add(arrData[1]);
+        }
         int tempIndex;
         do{
-            for (int i = 0; i < listHangXe.size() ; i++) {
+            for (int i = 0; i < listTenHangXe.size() ; i++) {
                 System.out.println(
-                        i + " - "+ listHangXe.get(i)
+                        i + " - "+ listTenHangXe.get(i)
                 );
             }
             System.out.println("Nhập lựa chọn của bạn");
@@ -40,11 +46,11 @@ public class Controller {
                 }
             }while (!Validation.isNumber(tempChoose));
              tempIndex = Integer.parseInt(tempChoose);
-            if(tempIndex > listHangXe.size()-1){
+            if(tempIndex > listTenHangXe.size()-1){
                 System.out.println("Vui lòng chọn các số có sẵn");
             }
-        }while (tempIndex > listHangXe.size()-1);
-        return listHangXe.get(tempIndex);
+        }while (tempIndex > listTenHangXe.size()-1);
+        return listTenHangXe.get(tempIndex);
     }
     public String chonkieuXe(){
         List<String> listKieuXe = new ArrayList<>();
