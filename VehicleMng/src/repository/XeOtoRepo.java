@@ -23,10 +23,12 @@ public class XeOtoRepo implements IOtoRepo{
     }
 
     @Override
-    public boolean addXeOto(XeOto xeOto) {
+    public Boolean addVehicle(XeOto xeOto) {
         File.writeToFile(PATH_XEOTO,xeOto.dataToString());
         return true;
     }
+
+
 
     @Override
     public XeOto findByBKS(String bienKiemSoat) {
@@ -38,6 +40,22 @@ public class XeOtoRepo implements IOtoRepo{
         }
         return  null;
     }
+
+    @Override
+    public void updateVehicle(XeOto xeOto) {
+        List<XeOto> lists = getAll();
+        for (int i = 0; i < lists.size(); i++) {
+            if(Objects.equals(lists.get(i).getBienKiemSoat(), xeOto.getBienKiemSoat())){
+                lists.set(i,xeOto);
+                break;
+            }
+        }
+        File.clearData(PATH_XEOTO);
+        for(XeOto xeOto1:lists){
+            File.writeToFile(PATH_XEOTO,xeOto1.dataToString());
+        }
+    }
+
     @Override
     public void deleteVehicle(String bienKiemSoat) {
         List<XeOto> lists = getAll();

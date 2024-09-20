@@ -8,7 +8,6 @@ import model.XeTai;
 import service.XeMayService;
 import service.XeOtoService;
 import service.XeTaiService;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -77,10 +76,13 @@ public class Controller {
         }while (tempIndex > listKieuXe.size()-1);
         return listKieuXe.get(tempIndex);
     }
-    public void inputData(){
+    public void inputData(String bienKiemSoat){
+        if(bienKiemSoat == null){
+            System.out.println("Nhập Biển Kiểm Soát");
+            bienKiemSoat =scanner.nextLine();
+        }
 
-        System.out.println("Nhập Biển Kiểm Soát");
-        bienKiemSoat =scanner.nextLine();
+        //System.out.println(bienKiemSoat);
         System.out.println("Chọn hãng sản xuất");
         hangSanXuat = chonHangSanXuat();
         System.out.println("Nhập năm sản xuất");
@@ -119,7 +121,7 @@ public class Controller {
         }
     }
     public void addXeTai(){
-        inputData();
+        inputData(null);
         System.out.println("Nhập trọng tải");
         String temp;
         do{
@@ -130,10 +132,10 @@ public class Controller {
         }while (!Validation.isNumber(temp));
         int trongTai = Integer.parseInt(temp);
         XeTai xeTai = new XeTai(bienKiemSoat,hangSanXuat,namSanXuat,chuSoHuu,trongTai);
-        xeTaiService.addXeTai(xeTai);
+        xeTaiService.addVehicle(xeTai);
     }
     public void addXeOto(){
-        inputData();
+        inputData(null);
         System.out.println("Nhập số chỗ ngồi");
         String temp;
         do{
@@ -146,10 +148,10 @@ public class Controller {
         System.out.println("Chọn kiểu xe");
         String kieuXe = chonkieuXe();
         XeOto xeOto = new XeOto(bienKiemSoat,hangSanXuat,namSanXuat,chuSoHuu,soChoNgoi,kieuXe);
-        xeOtoService.addXeOto(xeOto);
+        xeOtoService.addVehicle(xeOto);
     }
     public void addXeMay(){
-        inputData();
+        inputData(null);
         System.out.println("Nhập công suất");
         String temp;
         do{
@@ -160,7 +162,7 @@ public class Controller {
         }while (!Validation.isNumber(temp));
         int congSuat = Integer.parseInt(temp);
         XeMay xeMay = new XeMay(bienKiemSoat,hangSanXuat,namSanXuat,chuSoHuu,congSuat);
-        xeMayService.addXeMay(xeMay);
+        xeMayService.addVehicle(xeMay);
     }
 
     public  boolean isExist(String bienKiemSoat,int type){
@@ -229,5 +231,61 @@ public class Controller {
         }else {
             System.out.println("Xe mang BKS ="+bienKiemSoat+" không tồn tại!");
         }
+    }
+    public void updateVehicle(int type){
+        System.out.println("Nhập BKS xe cần cập nhật");
+        String bienKiemSoat = scanner.nextLine();
+
+        if(type == 1){
+
+            if(isExist(bienKiemSoat,1)){
+                inputData(bienKiemSoat);
+
+                System.out.println("Nhập trọng tải");
+                String temp;
+                do{
+                    temp = scanner.nextLine();
+                    if(!Validation.isNumber(temp)){
+                        System.out.println("Nhập dữ liệu định dạng số");
+                    }
+                }while (!Validation.isNumber(temp));
+                int trongTai = Integer.parseInt(temp);
+                System.out.println(bienKiemSoat);
+                XeTai xeTai = new XeTai(bienKiemSoat,hangSanXuat,namSanXuat,chuSoHuu,trongTai);
+                xeTaiService.updateVehicle(xeTai);
+            }
+
+        } else if (type == 2) {
+          //  XeOto
+            inputData(bienKiemSoat);
+            System.out.println("Nhập số chỗ ngồi");
+            String temp;
+            do{
+                temp = scanner.nextLine();
+                if(!Validation.isNumber(temp)){
+                    System.out.println("Nhập dữ liệu định dạng số");
+                }
+            }while (!Validation.isNumber(temp));
+            int soChoNgoi = Integer.parseInt(temp);
+            System.out.println("Chọn kiểu xe");
+            String kieuXe = chonkieuXe();
+            XeOto xeOto = new XeOto(bienKiemSoat,hangSanXuat,namSanXuat,chuSoHuu,soChoNgoi,kieuXe);
+            xeOtoService.updateVehicle(xeOto);
+        } else if (type == 3) {
+         //   XeMay
+            inputData(bienKiemSoat);
+            System.out.println("Nhập công suất");
+            String temp;
+            do{
+                temp = scanner.nextLine();
+                if(!Validation.isNumber(temp)){
+                    System.out.println("Nhập dữ liệu định dạng số");
+                }
+            }while (!Validation.isNumber(temp));
+            int congSuat = Integer.parseInt(temp);
+            XeMay xeMay = new XeMay(bienKiemSoat,hangSanXuat,namSanXuat,chuSoHuu,congSuat);
+            xeMayService.updateVehicle(xeMay);
+        }
+
     }
 }

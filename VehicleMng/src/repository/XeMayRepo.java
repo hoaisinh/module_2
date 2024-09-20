@@ -2,8 +2,6 @@ package repository;
 
 import common.File;
 import model.XeMay;
-import model.XeOto;
-import model.XeTai;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +36,12 @@ public class XeMayRepo implements IXeMayRepo{
     }
 
     @Override
-    public boolean addXeMay(XeMay xeMay) {
-        File.writeToFile(PATH_XEMAY,xeMay.dataToString());
-        return true;
+    public Boolean addVehicle(XeMay xeMay) {
+            File.writeToFile(PATH_XEMAY,xeMay.dataToString());
+            return true;
     }
+
+
     @Override
     public XeMay findByBKS(String bienKiemSoat) {
         List<XeMay> list = getAll();
@@ -51,5 +51,20 @@ public class XeMayRepo implements IXeMayRepo{
             }
         }
         return  null;
+    }
+
+    @Override
+    public void updateVehicle(XeMay xeMay) {
+        List<XeMay> lists = getAll();
+        for (int i = 0; i < lists.size(); i++) {
+            if(Objects.equals(lists.get(i).getBienKiemSoat(), xeMay.getBienKiemSoat())){
+                lists.set(i,xeMay);
+                break;
+            }
+        }
+        File.clearData(PATH_XEMAY);
+        for(XeMay xeMay1:lists){
+            File.writeToFile(PATH_XEMAY,xeMay1.dataToString());
+        }
     }
 }

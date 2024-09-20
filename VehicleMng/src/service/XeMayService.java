@@ -18,12 +18,17 @@ public class XeMayService implements IXeMayService{
     }
 
     @Override
-    public boolean addXeMay(XeMay xeMay) {
-        return xeMayRepo.addXeMay(xeMay);
+    public boolean addVehicle(XeMay xeMay) {
+        return xeMayRepo.addVehicle(xeMay);
     }
 
     @Override
     public XeMay findByBKS(String bienKiemSoat) {
         return xeMayRepo.findByBKS(bienKiemSoat);
+    }
+
+    @Override
+    public void updateVehicle(XeMay xeMay) {
+        xeMayRepo.updateVehicle(xeMay);
     }
 }

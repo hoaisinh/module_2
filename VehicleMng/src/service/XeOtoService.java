@@ -13,13 +13,18 @@ public class XeOtoService implements IOtoService{
     }
 
     @Override
-    public boolean addXeOto(XeOto xeOto) {
-        return xeOtoRepo.addXeOto(xeOto);
+    public boolean addVehicle(XeOto xeOto) {
+        return xeOtoRepo.addVehicle(xeOto);
     }
 
     @Override
     public XeOto findByBKS(String bienKiemSoat) {
         return xeOtoRepo.findByBKS(bienKiemSoat);
+    }
+
+    @Override
+    public void updateVehicle(XeOto xeOto) {
+        xeOtoRepo.updateVehicle(xeOto);
     }
 
     @Override

@@ -22,10 +22,9 @@ public class XeTaiRepo implements IXeTaiRepo{
     }
 
     @Override
-    public boolean addXeTai(XeTai xeTai) {
+    public Boolean addVehicle(XeTai xeTai) {
         File.writeToFile(PATH_XETAI,xeTai.dataToString());
         return true;
-
     }
 
     @Override
@@ -53,5 +52,20 @@ public class XeTaiRepo implements IXeTaiRepo{
             }
         }
         return  null;
+    }
+
+    @Override
+    public void updateVehicle(XeTai xeTai) {
+        List<XeTai> lists = getAll();
+        for (int i = 0; i < lists.size(); i++) {
+            if(Objects.equals(lists.get(i).getBienKiemSoat(), xeTai.getBienKiemSoat())){
+                lists.set(i,xeTai);
+                break;
+            }
+        }
+        File.clearData(PATH_XETAI);
+        for(XeTai xeTai1:lists){
+            File.writeToFile(PATH_XETAI,xeTai1.dataToString());
+        }
     }
 }

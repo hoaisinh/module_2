@@ -13,9 +13,9 @@ public class XeTaiService implements IXeTaiService{
     }
 
     @Override
-    public boolean addXeTai(XeTai xeTai)
+    public boolean addVehicle(XeTai xeTai)
     {
-        return xeTaiRepo.addXeTai(xeTai);
+        return xeTaiRepo.addVehicle(xeTai);
     }
 
     @Override
@@ -27,4 +27,11 @@ public class XeTaiService implements IXeTaiService{
     public XeTai findByBKS(String bienKiemSoat) {
         return xeTaiRepo.findByBKS(bienKiemSoat);
     }
+
+    @Override
+    public void updateVehicle(XeTai xeTai) {
+        xeTaiRepo.updateVehicle(xeTai);
+    }
+
+
 }

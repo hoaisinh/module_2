@@ -14,11 +14,12 @@ public class AppManagement {
 
         do{
             System.out.println(
-                    "-------------Home------------- \n" +
-                            "1. Thêm mới phương tiện \n" +
-                            "2. Hiển thị phương tiện \n" +
-                            "3. Xóa phương tiện \n" +
-                            "4. Thoát"
+                    "-------------Quản lý phương tiện------------- \n" +
+                            "1. Thêm mới  \n" +
+                            "2. Hiển thị  \n" +
+                            "3. Xóa  \n" +
+                            "4. Cập nhật thông tin \n" +
+                            "5. Thoát"
             );
             int choose =Integer.parseInt(scanner.nextLine());
             switch (choose){
@@ -29,6 +30,8 @@ public class AppManagement {
                 case 3:
                     deleteVehicle();break;
                 case 4:
+                    updateVehicle();break;
+                case 5:
                     System.exit(1);break;
             }
         }while (true);
@@ -66,6 +69,24 @@ public class AppManagement {
                 controller.getAll(2);;break;
             case 3:
                 controller.getAll(3);break;
+
+        }
+    }
+    public static void updateVehicle(){
+        System.out.println(
+                "-------------Cập nhật thông tin phương tiện ------------- \n" +
+                        "1. Xe tải \n" +
+                        "2. Xe ô tô \n" +
+                        "3. Xe máy"
+        );
+        int choose =Integer.parseInt(scanner.nextLine());
+        switch (choose){
+            case 1:
+                controller.updateVehicle(1);break;
+            case 2:
+                controller.updateVehicle(2);;break;
+            case 3:
+                controller.updateVehicle(3);break;
 
         }
     }
