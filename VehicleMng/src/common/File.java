@@ -10,7 +10,7 @@ public class File {
     public static void writeToFile(String path,String data){
         try(
                 FileWriter fileWriter = new FileWriter(path,true);
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)
         ){
                 bufferedWriter.write(data);
                 bufferedWriter.newLine();
@@ -22,7 +22,7 @@ public class File {
         List<String> lists = new ArrayList<>();
         try(
                 FileReader fileReader = new FileReader(path);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                BufferedReader bufferedReader = new BufferedReader(fileReader)
         ){
             String temp;
             while ((temp = bufferedReader.readLine()) != null){
@@ -36,7 +36,7 @@ public class File {
     public static void clearData(String path){
         try(
                 FileWriter fileWriter = new FileWriter(path);
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)
         ){
             bufferedWriter.write("");
 

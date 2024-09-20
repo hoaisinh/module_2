@@ -1,14 +1,12 @@
 package repository;
 
-import model.XeTai;
-
 import java.util.List;
 
 public interface IVehicleRepo<T> {
 
-    void deleteVehicle(String bienKiemSoat);
+    void deleteVehicle(String licensePlate);
     List<T> getAll();
-    Boolean addVehicle(T t);
-    T findByBKS(String bienKiemSoat);
+    void addVehicle(T t);
+    T findByBKS(String licensePlate);
     void updateVehicle(T t);
 }

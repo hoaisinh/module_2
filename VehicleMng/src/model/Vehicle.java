@@ -1,58 +1,58 @@
 package model;
 
 public abstract class Vehicle {
-    private String bienKiemSoat,hangSanXuat,chuSoHuu;
-    private int namSanXuat;
+    private String licensePlate, manufacture, owner;
+    private int yearOfManufacture;
 
-    public Vehicle(String bienKiemSoat, String hangSanXuat, int namsanXuat, String chuSoHuu) {
-        this.bienKiemSoat = bienKiemSoat;
-        this.hangSanXuat = hangSanXuat;
-        this.namSanXuat = namsanXuat;
-        this.chuSoHuu = chuSoHuu;
+    public Vehicle(String licensePlate, String manufacture, String owner, int yearOfManufacture) {
+        this.licensePlate = licensePlate;
+        this.manufacture = manufacture;
+        this.owner = owner;
+        this.yearOfManufacture = yearOfManufacture;
     }
 
-    public String getBienKiemSoat() {
-        return bienKiemSoat;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setBienKiemSoat(String bienKiemSoat) {
-        this.bienKiemSoat = bienKiemSoat;
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
-    public String getHangSanXuat() {
-        return hangSanXuat;
+    public String getManufacture() {
+        return manufacture;
     }
 
-    public void setHangSanXuat(String hangSanXuat) {
-        this.hangSanXuat = hangSanXuat;
+    public void setManufacture(String manufacture) {
+        this.manufacture = manufacture;
     }
 
-    public int getNamsanXuat() {
-        return namSanXuat;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setNamsanXuat(String namsanXuat) {
-        this.namSanXuat = namSanXuat;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
-    public String getChuSoHuu() {
-        return chuSoHuu;
+    public int getYearOfManufacture() {
+        return yearOfManufacture;
     }
 
-    public void setChuSoHuu(String chuSoHuu) {
-        this.chuSoHuu = chuSoHuu;
+    public void setYearOfManufacture(int yearOfManufacture) {
+        this.yearOfManufacture = yearOfManufacture;
     }
 
     @Override
     public String toString() {
-        return
-                "bienKiemSoat='" + bienKiemSoat + '\'' +
-                ", hangSanXuat='" + hangSanXuat + '\'' +
-                ", namsanXuat='" + namSanXuat + '\'' +
-                ", chuSoHuu='" + chuSoHuu + '\'' ;
-
+        return "Vehicle {" +
+                "licensePlate = " + licensePlate + 
+                ", manufacture = " + manufacture +
+                ", owner = " + owner +
+                ", yearOfManufacture = " + yearOfManufacture ;
     }
+
     public String dataToString(){
-        return bienKiemSoat+","+hangSanXuat+","+namSanXuat+","+chuSoHuu;
+        return licensePlate +","+ manufacture +","+ yearOfManufacture +","+ owner;
     }
 }

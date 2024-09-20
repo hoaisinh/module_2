@@ -1,12 +1,12 @@
 package view;
 
-import controller.Controller;
+import controller.VehicleController;
 
 import java.util.Scanner;
 
 public class AppManagement {
     private final static Scanner scanner = new Scanner(System.in);
-    private static final Controller controller = new Controller();
+    private static final VehicleController VEHICLE_CONTROLLER = new VehicleController();
     public static void main(String[] args) {
         vehicleManagement();
     }
@@ -46,11 +46,11 @@ public class AppManagement {
         int choose =Integer.parseInt(scanner.nextLine());
         switch (choose){
             case 1:
-              controller.addXeTai();break;
+              VEHICLE_CONTROLLER.addTruck(null);break;
             case 2:
-                controller.addXeOto();break;
+                VEHICLE_CONTROLLER.addCar(null);break;
             case 3:
-               controller.addXeMay();break;
+               VEHICLE_CONTROLLER.addMotorbike(null);break;
 
         }
     }
@@ -64,11 +64,11 @@ public class AppManagement {
         int choose =Integer.parseInt(scanner.nextLine());
         switch (choose){
             case 1:
-                controller.getAll(1);break;
+                VEHICLE_CONTROLLER.getAll(1);break;
             case 2:
-                controller.getAll(2);;break;
+                VEHICLE_CONTROLLER.getAll(2);;break;
             case 3:
-                controller.getAll(3);break;
+                VEHICLE_CONTROLLER.getAll(3);break;
 
         }
     }
@@ -82,11 +82,11 @@ public class AppManagement {
         int choose =Integer.parseInt(scanner.nextLine());
         switch (choose){
             case 1:
-                controller.updateVehicle(1);break;
+                VEHICLE_CONTROLLER.updateVehicle(1);break;
             case 2:
-                controller.updateVehicle(2);;break;
+                VEHICLE_CONTROLLER.updateVehicle(2);;break;
             case 3:
-                controller.updateVehicle(3);break;
+                VEHICLE_CONTROLLER.updateVehicle(3);break;
 
         }
     }
@@ -100,11 +100,11 @@ public class AppManagement {
         int choose =Integer.parseInt(scanner.nextLine());
         switch (choose){
             case 1:
-                controller.deleteXeTai();break;
+                VEHICLE_CONTROLLER.deleteTruck();break;
             case 2:
-                controller.deleteXeOto();;break;
+                VEHICLE_CONTROLLER.deleteCar();;break;
             case 3:
-                controller.deleteXeMay();break;
+                VEHICLE_CONTROLLER.deleteMotorbike();break;
 
         }
     }
