@@ -39,8 +39,6 @@ public class File {
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)
         ){
             bufferedWriter.write("");
-
-//            bufferedWriter.newLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

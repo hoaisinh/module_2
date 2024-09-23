@@ -20,13 +20,13 @@ public class Motorbike extends Vehicle {
 
     @Override
     public String toString() {
-        return super.toString()+
+        return "Motorbike {" + super.toString()+
                 ", capacity = " + capacity +
                 '}';
     }
 
     @Override
     public String dataToString() {
-        return super.dataToString()+", capacity = "+ capacity;
+        return super.dataToString()+","+ capacity;
     }
 }

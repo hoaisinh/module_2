@@ -31,7 +31,7 @@ public class Car extends Vehicle {
 
     @Override
     public String toString() {
-        return  super.toString() +
+        return  "Car {"+super.toString() +
                 ", numberOfSeats = " + numberOfSeats +
                 ", vehicleType = " + vehicleType +
                 "}";

@@ -80,10 +80,17 @@ public class VehicleController {
         return listVehicleModel.get(tempIndex);
     }
     
-    public void inputData(String hadLicensePlate){
+    public void inputData(String hadLicensePlate, int vehicleType){
         if(hadLicensePlate == null){
-            System.out.println("Enter license plate");
-            licensePlate =scanner.nextLine();
+            boolean isExist;
+            do{
+                System.out.println("Enter license plate");
+                licensePlate =scanner.nextLine();
+                isExist = isExist(licensePlate,vehicleType);
+                if(isExist){
+                    System.out.println("licensePlate = " + licensePlate + " already exists");
+                }
+            }while (isExist);
         }
         System.out.println("Choose a manufacturer");
         manufacturer = selectManufacturer();
@@ -98,6 +105,20 @@ public class VehicleController {
         yearOfManufacture = Integer.parseInt(temp);
         System.out.println("Enter Owner");
         owner = scanner.nextLine();
+    }
+
+    public  boolean isExist(String licensePlate,int type){
+        if(type == 1){
+            Truck xeTai = truckService.findByBKS(licensePlate);
+            return  xeTai != null;
+        } else if (type == 2) {
+            Car xeOto = carService.findByBKS(licensePlate);
+            return xeOto != null;
+        } else if (type == 3) {
+            Motorbike xeMay = motorbikeService.findByBKS(licensePlate);
+            return xeMay != null;
+        }
+        return false;
     }
 
     public void getAll(int type){
@@ -124,7 +145,7 @@ public class VehicleController {
     
     public void addTruck(String hadLicensePlate){
         boolean isAdd = true;
-        inputData(hadLicensePlate);
+        inputData(hadLicensePlate,1);
         if(hadLicensePlate != null){
             isAdd = false;
             licensePlate = hadLicensePlate;
@@ -145,12 +166,11 @@ public class VehicleController {
         }else {
             truckService.updateVehicle(truck);
         }
-
     }
     
     public void addCar(String hadLicensePlate){
         boolean isAdd;
-        inputData(hadLicensePlate);
+        inputData(hadLicensePlate,2);
         if(hadLicensePlate == null){
             isAdd = true;
         }else {
@@ -178,7 +198,7 @@ public class VehicleController {
     
     public void addMotorbike(String hadLicensePlate){
         boolean isAdd;
-        inputData(hadLicensePlate);
+        inputData(hadLicensePlate,3);
         if(hadLicensePlate == null){
             isAdd = true;
         }else {
@@ -203,20 +223,6 @@ public class VehicleController {
 
     }
 
-    public  boolean isExist(String licensePlate,int type){
-        if(type == 1){
-            Truck xeTai = truckService.findByBKS(licensePlate);
-            return  xeTai != null;
-        } else if (type == 2) {
-            Car xeOto = carService.findByBKS(licensePlate);
-            return xeOto != null;
-        } else if (type == 3) {
-            Motorbike xeMay = motorbikeService.findByBKS(licensePlate);
-            return xeMay != null;
-        }
-        return false;
-    }
-    
     public Boolean isDeleteVehicle(String licensePlate){
         System.out.println("Are you sure you want to delete vehicles with license plates = "+licensePlate+"\n"
                 +"0 - No \n"
@@ -276,7 +282,7 @@ public class VehicleController {
         String licensePlate = scanner.nextLine();
         if(type == 1){
             if(isExist(licensePlate,1)){
-                addMotorbike(licensePlate);
+                addTruck(licensePlate);
             }
         } else if (type == 2) {
             if(isExist(licensePlate,2)) {
