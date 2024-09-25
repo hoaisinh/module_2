@@ -285,14 +285,20 @@ public class VehicleController {
         if(type == 1){
             if(isExist(licensePlate,1)){
                 addTruck(licensePlate);
+            }else {
+                System.out.println("The license plate number is invalid");
             }
         } else if (type == 2) {
             if(isExist(licensePlate,2)) {
                 addCar(licensePlate);
+            }else {
+                System.out.println("The license plate number is invalid");
             }
         } else if (type == 3) {
             if(isExist(licensePlate,3)) {
                 addMotorbike(licensePlate);
+            }else {
+                System.out.println("The license plate number is invalid");
             }
         }
     }
