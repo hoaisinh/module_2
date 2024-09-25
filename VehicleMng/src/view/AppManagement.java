@@ -1,5 +1,6 @@
 package view;
 
+import common.CustomFunction;
 import controller.VehicleController;
 
 import java.util.Scanner;
@@ -22,7 +23,7 @@ public class AppManagement {
                             4. Update\s
                             5. Exit"""
             );
-            int choose =Integer.parseInt(scanner.nextLine());
+            int choose =Integer.parseInt(CustomFunction.requiredDataInput());
             switch (choose){
                 case 1:
                     addVehicleManagement();break;
@@ -45,7 +46,7 @@ public class AppManagement {
                         2. Car\s
                         3. Motorbike"""
         );
-        int choose =Integer.parseInt(scanner.nextLine());
+        int choose =Integer.parseInt(CustomFunction.requiredDataInput());
         switch (choose){
             case 1:
               VEHICLE_CONTROLLER.addTruck(null);break;
@@ -64,7 +65,7 @@ public class AppManagement {
                         2. Car\s
                         3. Motorbike"""
         );
-        int choose =Integer.parseInt(scanner.nextLine());
+        int choose =Integer.parseInt(CustomFunction.requiredDataInput());
         switch (choose){
             case 1:
                 VEHICLE_CONTROLLER.getAll(1);break;
@@ -83,7 +84,7 @@ public class AppManagement {
                         2. Car\s
                         3. Motorbike"""
         );
-        int choose =Integer.parseInt(scanner.nextLine());
+        int choose =Integer.parseInt(CustomFunction.requiredDataInput());
         switch (choose){
             case 1:
                 VEHICLE_CONTROLLER.updateVehicle(1);break;
@@ -102,7 +103,7 @@ public class AppManagement {
                         2. Car\s
                         3. Motorbike"""
         );
-        int choose =Integer.parseInt(scanner.nextLine());
+        int choose =Integer.parseInt(CustomFunction.requiredDataInput());
         switch (choose){
             case 1:
                 VEHICLE_CONTROLLER.deleteTruck();break;

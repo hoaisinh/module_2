@@ -1,5 +1,6 @@
 package controller;
 
+import common.CustomFunction;
 import common.File;
 import common.Notifications;
 import common.Validation;
@@ -41,7 +42,7 @@ public class VehicleController {
             NOTIFICATIONS.enterSelect();
             String tempChoose;
             do{
-                tempChoose = scanner.nextLine();
+                tempChoose = CustomFunction.requiredDataInput();
                 if(!Validation.isNumber(tempChoose)){
                     NOTIFICATIONS.dataIsNumeric();
                 }
@@ -67,7 +68,7 @@ public class VehicleController {
             }
             String tempChoose;
             do{
-                tempChoose = scanner.nextLine();
+                tempChoose = CustomFunction.requiredDataInput();
                 if(!Validation.isNumber(tempChoose)){
                     NOTIFICATIONS.dataIsNumeric();
                 }
@@ -85,7 +86,7 @@ public class VehicleController {
             boolean isExist;
             do{
                 System.out.println("Enter license plate");
-                licensePlate =scanner.nextLine();
+                licensePlate = CustomFunction.requiredDataInput();
                 isExist = isExist(licensePlate,vehicleType);
                 if(isExist){
                     System.out.println("licensePlate = " + licensePlate + " already exists");
@@ -97,14 +98,15 @@ public class VehicleController {
         System.out.println("Year of manufacture");
         String temp;
         do{
-             temp = scanner.nextLine();
+
+            temp = CustomFunction.requiredDataInput();
              if(!Validation.isYear(temp)){
                  System.out.println("Year of manufacture must be from 1000 to 2999");
              }
         }while (!Validation.isYear(temp));
         yearOfManufacture = Integer.parseInt(temp);
         System.out.println("Enter Owner");
-        owner = scanner.nextLine();
+        owner = CustomFunction.requiredDataInput();
     }
 
     public  boolean isExist(String licensePlate,int type){
@@ -154,7 +156,7 @@ public class VehicleController {
         System.out.println("Enter payload");
         String temp;
         do{
-            temp = scanner.nextLine();
+            temp = CustomFunction.requiredDataInput();
             if(!Validation.isNumber(temp)){
                 System.out.println("Data must be in numeric format");
             }
@@ -180,7 +182,7 @@ public class VehicleController {
         System.out.println("Enter number of seats");
         String temp;
         do{
-            temp = scanner.nextLine();
+            temp = CustomFunction.requiredDataInput();
             if(!Validation.isNumber(temp)){
                 System.out.println("Data must be in numeric format");
             }
@@ -208,7 +210,7 @@ public class VehicleController {
         System.out.println("Enter payload");
         String temp;
         do{
-            temp = scanner.nextLine();
+            temp = CustomFunction.requiredDataInput();
             if(!Validation.isNumber(temp)){
                 System.out.println("Data must be in numeric format");
             }
@@ -228,13 +230,13 @@ public class VehicleController {
                 +"0 - No \n"
                 +"1 - Yes"
         );
-        int choose = Integer.parseInt(scanner.nextLine());
+        int choose = Integer.parseInt(CustomFunction.requiredDataInput());
         return choose == 1;
     }
     
     public void deleteTruck(){
         System.out.println("Enter the license plate number of the vehicle to be deleted");
-        String licensePlate = scanner.nextLine();
+        String licensePlate = CustomFunction.requiredDataInput();
         if(isExist(licensePlate,1)){
             if(isDeleteVehicle(licensePlate)){
                 truckService.deleteVehicle(licensePlate);
@@ -249,7 +251,7 @@ public class VehicleController {
     
     public void deleteCar(){
         System.out.println("Enter the license plate number of the vehicle to be deleted");
-        String licensePlate = scanner.nextLine();
+        String licensePlate = CustomFunction.requiredDataInput();
         if(isExist(licensePlate,2)){
             if(isDeleteVehicle(licensePlate)){
                 carService.deleteVehicle(licensePlate);
@@ -264,7 +266,7 @@ public class VehicleController {
     
     public void deleteMotorbike(){
         System.out.println("Enter the license plate number of the vehicle to be deleted");
-        String licensePlate = scanner.nextLine();
+        String licensePlate = CustomFunction.requiredDataInput();
         if(isExist(licensePlate,3)){
             if(isDeleteVehicle(licensePlate)){
                 motorbikeService.deleteVehicle(licensePlate);
@@ -279,7 +281,7 @@ public class VehicleController {
     
     public void updateVehicle(int type){
         System.out.println("Enter the license plate number of the vehicle to be updated");
-        String licensePlate = scanner.nextLine();
+        String licensePlate = CustomFunction.requiredDataInput();
         if(type == 1){
             if(isExist(licensePlate,1)){
                 addTruck(licensePlate);
